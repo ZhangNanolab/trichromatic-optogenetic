@@ -1,5 +1,5 @@
 #include "laser.h" 
-laser laser808(3), laser980(4), laser1532(5); // Attribute digital pin for lasers BMC signal
+laser laser808(3,4,5), laser980(6,7,8), laser1532(9,10,11); // Attribute digital pin for lasers BMC signal and built-inside power stage sequence enable
 byte max_cycle = 3; // scanning loop times
 byte count = 0;
 
@@ -10,25 +10,35 @@ void setup(){
 void loop(){
   if(count<cycle)
   { 
-    laser980.on();
-    laser808.on();
     laser980.sequp();
     laser808.seqdown();
-    delay(3000);
-    laser808.off();
-    
-    laser1532.on();
-    laser980.seqdown();
-    laser1532.sequp();
+    laser980.on();
+    laser808.on();
     delay(3000);
     laser980.off();
+    laser808.off();
+    laser808.seqend();
+    laser980.seqend();
     
-    laser808.on();
+    laser980.seqdown();
+    laser1532.sequp();
+    laser1532.on();
+    laser980.on();
+    delay(3000);
+    laser980.off();
+    laser1532.off();
+    laser1532.seqend();
+    laser980.seqend();
+    
     laser808.sequp();
     laser1532.seqdown();
+    laser808.on();
+    laser1532.on();
     delay(3000);
     laser808.off();
     laser1532.off();
+    laser808.seqend();
+    laser1532.seqend();
     ++count;
     delay(1000);
   }
