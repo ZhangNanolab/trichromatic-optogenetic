@@ -9,8 +9,9 @@ class Laser
     byte pin; //pin to ctrl Laser.
     
   public:
-    Laser(byte p, bool state=LOW);
+    Laser(int laseridx, byte p, bool state=LOW);
     ~Laser();
+    int getIndex();
     byte getPin();
     void on();
     void off();
