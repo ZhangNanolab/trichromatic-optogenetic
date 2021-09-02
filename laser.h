@@ -19,6 +19,7 @@ class Laser
     void off();
     void sequp();
     void seqdwon();
+    void seqend();
     boolean getState();
     void disattach();
 }
