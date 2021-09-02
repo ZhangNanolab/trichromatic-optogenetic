@@ -6,10 +6,12 @@
 class Laser
 {
   private:
-    byte pin; //pin to ctrl Laser.
+    byte p1; //pin to ctrl Laser.
+    byte p2; //pins to ctrl power seqs.
+    byte p3; 
     
   public:
-    Laser(int laseridx, byte p, bool state=LOW);
+    Laser(byte p1,byte p2,byte p3 bool state=LOW);
     ~Laser();
     int getIndex();
     byte getPin();
