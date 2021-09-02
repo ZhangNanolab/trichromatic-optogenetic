@@ -24,6 +24,12 @@ void laser::seqdown()
   digitalWrite(p3,HIGHT);
 }
 
+void laser::seqend()
+{
+  digitalWrite(p2,LOW);
+  digitalWrite(p3,LOW);
+}
+
 void laser::on()
 {
   digitalWrite(p1,HIGHT);
