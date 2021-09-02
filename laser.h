@@ -15,6 +15,8 @@ class Laser
     byte getPin();
     void on();
     void off();
+    void sequp();
+    void seqdwon();
     boolean getState();
     void disattach();
 }
